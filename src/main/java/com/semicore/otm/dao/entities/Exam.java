@@ -19,6 +19,11 @@ public class Exam {
         @Column(name = "stud_id")
         private Long studentId;
 
+        /*@ManyToOne
+        @JoinColumn(name = "stud_id", referencedColumnName = "student_id")
+        private Student student;*/
+
+
         public Long getExamId() {
             return examId;
         }
@@ -43,11 +48,19 @@ public class Exam {
             this.examDate = examDate;
         }
 
-        public Long getStudentId() {
+       public Long getStudentId() {
             return studentId;
         }
 
         public void setStudentId(Long studentId) {
             this.studentId = studentId;
         }
+
+       /* public Student getStudent() {
+            return student;
+        }
+
+        public void setStudent(Student student) {
+            this.student = student;
+        }*/
 }

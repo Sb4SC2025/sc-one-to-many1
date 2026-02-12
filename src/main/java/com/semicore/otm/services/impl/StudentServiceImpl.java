@@ -44,7 +44,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentResponse> getAllStudents() {
-        return List.of();
+        return convertStudentEntitiesToStudentResponses(studentRepository.findAll());
     }
 
     private Student convertStudentRequestToStudentEntity(StudentRequest studentRequest) {
@@ -102,4 +102,15 @@ public class StudentServiceImpl implements StudentService {
         return  examResponse;
     }
 
+
+    private List<StudentResponse> convertStudentEntitiesToStudentResponses(List<Student> students) {
+        List<StudentResponse> studentResponses = null;
+        if(!CollectionUtils.isEmpty(students)) {
+            studentResponses = new ArrayList<>();
+            for(Student student : students) {
+                studentResponses.add(convertStudentEntityToStudentResponse(student));
+            }
+        }
+        return studentResponses;
+    }
 }
